@@ -1,0 +1,34 @@
+{
+  "name": "@miyamo2/gatsby-source-blogapi-miyamo-today",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miyamo2/gatsby-source-blogapi-miyamo-today.git"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "@miyamo2:registry": "https://npm.pkg.github.com"
+  },
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "prepublishOnly": "bun build ./src/index.ts ./src/graphqlgen.ts ./src/gatsby-node.ts --outdir ./ --target node && rm -rf ./src",
+    "build": "bun build ./src/index.ts ./src/graphqlgen.ts ./src/gatsby-node.ts --outdir ./ --target node",
+    "graphqlgen": "cd ./src && bunx graphql-codegen generate"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@formkit/tempo": "^0.1.2",
+    "@graphql-codegen/cli": "^5.0.3",
+    "@graphql-codegen/typescript-graphql-request": "^6.2.0",
+    "gatsby": "^5.14.1",
+    "gatsby-source-filesystem": "^5.14.0",
+    "graphql": "16.9.0",
+    "graphql-request": "^7.1.2"
+  }
+}
