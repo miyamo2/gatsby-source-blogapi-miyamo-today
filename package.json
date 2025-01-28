@@ -12,7 +12,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "prepublishOnly": "bun build ./src/index.ts ./src/graphqlgen.ts ./src/gatsby-node.ts --outdir ./ --target node && rm -rf ./src",
+    "prepublishOnly": "bun build ./src/index.ts ./src/graphqlgen.ts ./src/gatsby-node.ts --outdir ./ --target node",
     "build": "bun build ./src/index.ts ./src/graphqlgen.ts ./src/gatsby-node.ts --outdir ./ --target node",
     "graphqlgen": "cd ./src && bunx graphql-codegen generate"
   },
