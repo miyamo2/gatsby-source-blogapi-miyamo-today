@@ -19,14 +19,14 @@ jobs:
 
       - uses: oven-sh/setup-bun@v2
         with:
-          bun-version: latest
+          bun-version: 1.2.1
+          registry-url: 'https://npm.pkg.github.com/'
+          scope: '@miyamo2'
 
       - name: Install dependencies
         run: bun install
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-
-      - run: npm publish
+      - name: Bun Publish
+        run: bun publish
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BUN_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
