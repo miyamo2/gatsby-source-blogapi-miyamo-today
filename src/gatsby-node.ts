@@ -31,7 +31,6 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async ({
   cache,
   createContentDigest,
 }, pluginOptions) => {
-  reporter.info("gatsby-source-blogapi-miyamo-today: start sourceNodes");
   const { createNode, createNodeField } = actions;
 
   const url = pluginOptions.url;
@@ -62,10 +61,10 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async ({
       }
     );
     if (!data) {
-      reporter.error("failed to get articles");
+      reporter.error("[gatsby-source-blogapi-miyamo-today] failed to get articles");
       continue;
     }
-    reporter.info(`fetched ${data.articles.edges.length} articles`);
+    reporter.info(`[gatsby-source-blogapi-miyamo-today] fetched ${data.articles.edges.length} articles`);
     
     createNodePromises.push(...data.articles.edges.map(async (edge) => {
       const articleNode = edge.node;
@@ -142,5 +141,5 @@ ${rawContent}`;
     after = endCursor;
   }
   await Promise.all(createNodePromises);
-  reporter.success("gatsby-source-blogapi-miyamo-today: end sourceNodes");
+  reporter.success("[gatsby-source-blogapi-miyamo-today] end sourceNodes");
 };
